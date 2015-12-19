@@ -1,7 +1,7 @@
 #coding=utf-8
 import pkg_resources
 from django.template import Context,Template
-from xblock.core import
+from xblock.core import XBlock
 from xblock.fields import String,Integer
 from xblock.fragment import Fragment
 class CccXBlock(XBlock):
