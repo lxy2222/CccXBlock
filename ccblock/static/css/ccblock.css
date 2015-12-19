@@ -1,0 +1,9 @@
+/* CSS for CccXBlock */
+
+.ccblock_block .count {
+    font-weight: bold;
+}
+
+.ccblock_block p {
+    cursor: pointer;
+}
