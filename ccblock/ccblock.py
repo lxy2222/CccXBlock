@@ -1,9 +1,12 @@
 #coding=utf-8
+import sys
 import pkg_resources
 from django.template import Context,Template
 from xblock.core import XBlock
 from xblock.fields import String,Integer
 from xblock.fragment import Fragment
+reload(sys)
+sys.setdefaultencoding("utf-8")
 class CccXBlock(XBlock):
     icon_class="video"
     '''
@@ -21,7 +24,7 @@ class CccXBlock(XBlock):
                     help="The width of the video")
     def load_resource(self,resource_path):
         resource_content = pkg_resources.resource_string(__name__,resource_path)
-        return unicode(resoure_content)
+        return unicode(resource_content)
     def render_template(self,template_path,context={}):
         template_str = self.load_resource(template_path)
         return Template(template_str).render(Context(context))
@@ -38,15 +41,12 @@ class CccXBlock(XBlock):
         frag.initialize_js('CccXBlockInitView')
         return frag
     def studio_view(self, context=None):
-         '''
-         editing the XBlock.
-        '''
+        
         context = {
             'display_name': self.display_name,
             'video_id' : self.video_id,
             'width': self.width,
-            
-        }
+             }
         html = self.render_template('static/html/ccblock_edit.html', context)
         frag = Fragment(html)
         frag.add_javascript(self.load_resource("static/js/src/ccblock_edit.js"))
