@@ -38,8 +38,9 @@ class CccXBlock(XBlock):
         frag.initialize_js('CccXBlockInitView')
         return frag
     def studio_view(self, context=None):
+         '''
          editing the XBlock.
-        
+        '''
         context = {
             'display_name': self.display_name,
             'video_id' : self.video_id,
