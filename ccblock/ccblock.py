@@ -44,9 +44,8 @@ class CccXBlock(XBlock):
         context = {
             'display_name': self.display_name,
             'video_id' : self.video_id,
-            'width': self.width,
-            
-        }
+            'width': self.width
+            }
         html = self.render_template('static/html/ccblock_edit.html', context)
         frag = Fragment(html)
         frag.add_javascript(self.load_resource("static/js/src/ccblock_edit.js"))

@@ -1,8 +1,9 @@
-function CcXBlockInitStudio(runtime,element){
-    $(element).find('.action-cancel').bind('click',function(){
+function CccXBlockInitStudio(runtime,element){
+    var elemContainer = $(element);
+    elemContainer.find('.action-cancel').click(function(){
     	runtime.notify('cancel',{});
-    }
-	$(element).find('.action-save').bind('click', function() {
+    });
+	elemContainer.find('.action-save').click(function() {
         var data = {
             'display_name': $('#cc_edit_display_name').val(),
             //'file_id': $('#youku_edit_file_id').val(),
