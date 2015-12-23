@@ -16,12 +16,18 @@ class CccXBlock(XBlock):
                default="cc player",
                scope=Scope.settings,
                help="This name appears in the top of the page")
+    user_id = String(display_name="user id",
+                     default=None,
+                     scope=Scope.settings,
+                     help="The user_id for your cc acount")
     video_id=String(display_name="video_id",
                     default=None,
                     scope=Scope.content,
                     help="The video_id for your video")
-    width = Integer(display_name="width",default="560",scope=Scope.content,
+    width = Integer(display_name="width",default="800",scope=Scope.content,
                     help="The width of the video")
+    height = Integer(display_name="height",default="450",scope=Scope.content,
+                     help="The height of the video")
     def load_resource(self,resource_path):
         resource_content = pkg_resources.resource_string(__name__,resource_path)
         return unicode(resource_content)
@@ -31,8 +37,10 @@ class CccXBlock(XBlock):
     def student_view(self,context=None):
         context = {
               'display_name':self.display_name,
+              'user_id':self.user_id,
               'video_id':self.video_id,
               'width':self.width,
+              'height':self.height,
         }
         html = self.render_template('static/html/ccblock_view.html', context)
         frag = Fragment(html)
@@ -44,14 +52,11 @@ class CccXBlock(XBlock):
         
         context = {
             'display_name': self.display_name,
+            'user_id':self.user_id,
             'video_id' : self.video_id,
-<<<<<<< HEAD
-            'width': self.width
-            }
-=======
             'width': self.width,
+            'height':self.height,
              }
->>>>>>> a8bb4d41b3f30671f4272d633316f0e0103884f6
         html = self.render_template('static/html/ccblock_edit.html', context)
         frag = Fragment(html)
         frag.add_javascript(self.load_resource("static/js/src/ccblock_edit.js"))
@@ -65,7 +70,8 @@ class CccXBlock(XBlock):
         self.display_name = data['display_name']
         self.video_id = data['video_id']
         self.width = data['width']
-        
+        self.user_id = data['user_id']
+        self.height = data['height']
 
         return {
             'result': 'success',
@@ -74,8 +80,9 @@ class CccXBlock(XBlock):
     def get_params(self, data, suffix=''):
         '''called when cc init'''
         return {"video_id":self.video_id,
-                
+                "user_id":self.user_id,
                 "width":self.width,
+                "height":self.height,
                 
                 }
     @staticmethod

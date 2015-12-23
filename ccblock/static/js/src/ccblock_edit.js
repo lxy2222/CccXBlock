@@ -7,8 +7,10 @@ function CccXBlockInitStudio(runtime,element){
         var data = {
             'display_name': $('#cc_edit_display_name').val(),
             //'file_id': $('#youku_edit_file_id').val(),
+            'user_id':$('#cc_edit_userid').val(),
             'video_id': $('#cc_edit_videoid').val(),
             'width': $('#cc_edit_width').val(),
+            'height':$('#cc_edit_height').val(),
            // 'height': $('#youku_edit_height').val(),
         };
 

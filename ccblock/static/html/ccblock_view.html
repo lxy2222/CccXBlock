@@ -1,7 +1,8 @@
 <div class="ccblock_block">
 	<h2>{{display_name}}</h2>
 	<hr>
-	 <div id="ccplayer" style="width:{{width}}px;height:800px">
-	 	   {{video_id|safe }}
+	 <div id="ccplayer">
+	 	<embed type="application/x-shockwave-flash" src="http://union.bokecc.com/flash/player.swf" style="width:{{width}}px,height:{{height}}px" 
+	 	flashvars="userid={{user_id}}&amp;videoid={{video_id}}&amp;mode=api&amp;autostart=false&amp;jscontrol=true">
      </div>
 </div>
